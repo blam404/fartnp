@@ -6,6 +6,7 @@ export default function Submit() {
 	const [imageError, setImageError] = useState(false);
 	const [instagram, setInstagram] = useState("");
 	const [password, setPassword] = useState("");
+	const [showSuccess, setShowSuccess] = useState(false);
 	const [success, setSuccess] = useState(false);
 	const [twitter, setTwitter] = useState("");
 	const [username, setUsername] = useState("");
@@ -42,6 +43,11 @@ export default function Submit() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+		setShowSuccess(false);
+		setTimeout(() => {
+			setSuccess(false);
+		}, 175);
 
 		if (password) {
 			console.log(
@@ -87,6 +93,9 @@ export default function Submit() {
 
 		if (data.completed) {
 			setSuccess(true);
+			setTimeout(() => {
+				setShowSuccess(true);
+			}, 150);
 		}
 	};
 
@@ -114,10 +123,10 @@ export default function Submit() {
 				</p>
 			</div>
 			<div className="mb-4 md:text-lg lg:text-xl md:w-2/3 mx-auto">
-				<form>
-					<div className="mb-2 flex">
+				<form className="flex flex-col items-center">
+					<div className="mb-2">
 						<div
-							className={`w-28 md:w-32 ${
+							className={`text-base ${
 								usernameError ? "text-red-500" : ""
 							}`}
 						>
@@ -131,8 +140,8 @@ export default function Submit() {
 							value={username}
 						/>
 					</div>
-					<div className="mb-2 hidden flex">
-						<div className="w-28 md:w-32">Password:</div>{" "}
+					<div className="mb-2 hidden">
+						<div className="text-base">Password</div>{" "}
 						<input
 							type="text"
 							className="leading-4 rounded-md w-80"
@@ -140,9 +149,9 @@ export default function Submit() {
 							value={password}
 						/>
 					</div>
-					<div className="mb-2 flex">
+					<div className="mb-2">
 						<div
-							className={`w-28 md:w-32 ${
+							className={`text-base ${
 								imageError ? "text-red-500" : ""
 							}`}
 						>
@@ -156,8 +165,8 @@ export default function Submit() {
 							value={image}
 						/>
 					</div>
-					<div className="mb-2 flex">
-						<div className="w-28 md:w-32">Facebook:</div>{" "}
+					<div className="mb-2">
+						<div className="text-base">Facebook</div>{" "}
 						<input
 							type="text"
 							className="leading-4 rounded-md w-80"
@@ -166,8 +175,8 @@ export default function Submit() {
 							value={facebook}
 						/>
 					</div>
-					<div className="mb-2 flex">
-						<div className="w-28 md:w-32">Instagram:</div>{" "}
+					<div className="mb-2">
+						<div className="text-base">Instagram</div>{" "}
 						<input
 							type="text"
 							className="leading-4 rounded-md w-80"
@@ -176,8 +185,8 @@ export default function Submit() {
 							value={instagram}
 						/>
 					</div>
-					<div className="mb-2 flex">
-						<div className="w-28 md:w-32">Twitter:</div>{" "}
+					<div className="mb-2">
+						<div className="text-base">Twitter</div>{" "}
 						<input
 							type="text"
 							className="leading-4 rounded-md w-80"
@@ -186,8 +195,8 @@ export default function Submit() {
 							value={twitter}
 						/>
 					</div>
-					<div className="mb-2 flex">
-						<div className="w-28 md:w-32">Website:</div>{" "}
+					<div className="mb-2">
+						<div className="text-base">Website</div>{" "}
 						<input
 							type="text"
 							className="leading-4 rounded-md w-80"
@@ -196,7 +205,7 @@ export default function Submit() {
 							value={website}
 						/>
 					</div>
-					<div className="flex justify-center">
+					<div>
 						<input
 							type="submit"
 							className="bg-emerald-300 border-2 rounded-md px-4 py-2 cursor-pointer"
@@ -204,6 +213,15 @@ export default function Submit() {
 						/>
 					</div>
 				</form>
+				{success && (
+					<div
+						className={`${
+							success && showSuccess ? "opacity-100" : "opacity-0"
+						} transition-all text-center`}
+					>
+						<p>Your submission has been received</p>
+					</div>
+				)}
 			</div>
 		</div>
 	);
