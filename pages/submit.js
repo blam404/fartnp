@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export default function Submit() {
+export default function Submit({ footerHeight }) {
 	const [facebook, setFacebook] = useState("");
 	const [image, setImage] = useState("");
 	const [imageError, setImageError] = useState(false);
@@ -111,7 +111,10 @@ export default function Submit() {
 	}, [success]);
 
 	return (
-		<div className="container set-minHeight mx-auto px-4 mt-28 mb-8">
+		<div
+			className="container set-minHeight mx-auto px-4 mt-28 mb-8"
+			style={{ minHeight: `calc(100vh - 9rem - ${footerHeight}px` }}
+		>
 			<div className="mb-4 md:text-lg lg:text-xl md:w-2/3 mx-auto">
 				<h1 className="text-center text-xl md:text-2xl lg:text-3xl md:mb-2">
 					SUBMIT

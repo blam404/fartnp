@@ -6,10 +6,13 @@ import client from "../apolloClient";
 import CoverPhoto from "../components/home/coverPhoto";
 const Posts = dynamic(() => import("../components/home/posts"), { ssr: false });
 
-export default function Home({ cover, pinned, regular }) {
+export default function Home({ cover, pinned, regular, footerHeight }) {
 	const limitedPinned = pinned.slice(0, 4);
 	return (
-		<div className="container set-minHeight mx-auto px-4 mt-28 mb-8">
+		<div
+			className="container mx-auto px-4 mt-28 mb-8"
+			style={{ minHeight: `calc(100vh - 9rem - ${footerHeight}px` }}
+		>
 			<CoverPhoto post={cover[0]} />
 			{limitedPinned.length > 0 && (
 				<>

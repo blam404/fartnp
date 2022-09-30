@@ -1,8 +1,12 @@
 import React from "react";
 import client from "../../apolloClient";
+import dynamic from "next/dynamic";
 import { gql } from "@apollo/client";
 import Image from "next/image";
-import Posts from "../../components/home/posts";
+
+const Posts = dynamic(() => import("../../components/home/posts"), {
+	ssr: false,
+});
 
 export async function getStaticPaths() {
 	const { data } = await client.query({
@@ -64,9 +68,12 @@ export async function getStaticProps(context) {
 	};
 }
 
-export default function Post({ posts, author }) {
+export default function Post({ posts, author, footerHeight }) {
 	return (
-		<div className="set-minHeight container mx-auto px-4 mt-28 mb-8">
+		<div
+			className="set-minHeight container mx-auto px-4 mt-28 mb-8"
+			style={{ minHeight: `calc(100vh - 9rem - ${footerHeight}px` }}
+		>
 			<div>
 				<div className="text-center mb-4">
 					<h1 className=" text-xl md:text-2xl lg:text-3xl">

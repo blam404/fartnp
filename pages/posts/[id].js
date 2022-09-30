@@ -61,7 +61,7 @@ export async function getStaticProps(context) {
 	};
 }
 
-export default function Post({ post }) {
+export default function Post({ post, footerHeight }) {
 	const [lorem, setLorem] = useState([]);
 	useEffect(() => {
 		if (lorem.length === 0) {
@@ -97,7 +97,10 @@ export default function Post({ post }) {
 	const publishedYear = publishedParsed.getFullYear();
 
 	return (
-		<div className="set-minHeight container mx-auto px-4 mt-28 mb-8">
+		<div
+			className="set-minHeight container mx-auto px-4 mt-28 mb-8"
+			style={{ minHeight: `calc(100vh - 9rem - ${footerHeight}px` }}
+		>
 			<div>
 				<div className="text-center mb-4">
 					<h1 className=" text-xl md:text-2xl lg:text-3xl">

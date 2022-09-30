@@ -1,8 +1,11 @@
 import React from "react";
 
-export default function About() {
+export default function About({ footerHeight }) {
 	return (
-		<div className="container set-minHeight mx-auto px-4 mt-28 mb-8">
+		<div
+			className="container mx-auto px-4 mt-28 mb-8"
+			style={{ minHeight: `calc(100vh - 9rem - ${footerHeight}px` }}
+		>
 			<div className="mb-4 md:text-lg lg:text-xl md:w-2/3 mx-auto">
 				<h1 className="text-center text-xl md:text-2xl lg:text-3xl md:mb-2">
 					ABOUT

@@ -68,7 +68,7 @@ const Nav = forwardRef((props, ref) => {
 			<>
 				<div
 					ref={modalRef}
-					className="fixed h-full w-full sm:w-1/2 md:w-2/5 sm:shadow-2xl left-full bottom-0 top-0 right-0 bg-emerald-300 z-20 overflow-y-auto transition-all duration-250"
+					className="fixed h-full w-full sm:w-1/2 md:w-2/5 sm:shadow-2xl left-full bottom-0 top-0 right-0 bg-emerald-100 z-20 overflow-y-auto transition-all duration-250"
 					style={{
 						transform: translate,
 					}}
