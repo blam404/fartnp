@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { LoremIpsum } from "react-lorem-ipsum";
+import { loremIpsum } from "react-lorem-ipsum";
 
 export default function Posts({ posts }) {
 	const monthArray = [
@@ -59,8 +59,15 @@ export default function Posts({ posts }) {
 									{post.body.text}
 								</p>
 							) : (
-								<div className="post-caption text-sm md:text-base mb-2">
-									<LoremIpsum startWithLoremIpsum={false} />
+								<div className="post-caption text-sm md:text-base">
+									{loremIpsum({
+										random: true,
+										startWithLoremIpsum: false,
+									}).map((text) => (
+										<p key={text} className="mb-0">
+											{text}
+										</p>
+									))}
 								</div>
 							)}
 							{/* Add link to post when that page is done */}
