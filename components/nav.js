@@ -7,7 +7,6 @@ import React, {
 } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
-import useMediaQuery from "../utils/useMediaQuery";
 
 const Nav = forwardRef((props, ref) => {
 	const [showModal, setShowModal] = useState(false);
@@ -95,6 +94,9 @@ const Nav = forwardRef((props, ref) => {
 					<nav className="text-3xl flex flex-col h-full justify-center text-center">
 						<div className="mb-2" onClick={closeModal}>
 							<Link href="/">Home</Link>
+						</div>
+						<div className="mb-2" onClick={closeModal}>
+							<Link href="/articles">Articles</Link>
 						</div>
 						<div className="mb-2" onClick={closeModal}>
 							<Link href="/submit">Submit</Link>

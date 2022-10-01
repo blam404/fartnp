@@ -7,20 +7,22 @@ import CoverPhoto from "../components/home/coverPhoto";
 const Posts = dynamic(() => import("../components/home/posts"), { ssr: false });
 
 export default function Home({ cover, pinned, regular, footerHeight }) {
-	const limitedPinned = pinned.slice(0, 4);
 	return (
 		<div
 			className="container mx-auto px-4 mt-28 mb-8"
 			style={{ minHeight: `calc(100vh - 9rem - ${footerHeight}px` }}
 		>
 			<CoverPhoto post={cover[0]} />
-			{limitedPinned.length > 0 && (
+			{pinned.length > 0 && (
 				<>
 					<div className="flex justify-center w-full">
 						<hr />
 					</div>
 					<div className="mb-8">
-						<Posts posts={limitedPinned} />
+						<h2 className="text-xl md:text-2xl lg:text-3xl text-center mb-8">
+							Must Read
+						</h2>
+						<Posts posts={pinned} />
 					</div>
 				</>
 			)}
@@ -28,9 +30,11 @@ export default function Home({ cover, pinned, regular, footerHeight }) {
 				<hr />
 			</div>
 			<div className="mb-8">
+				<h2 className="text-xl md:text-2xl lg:text-3xl text-center mb-8">
+					Latest Articles
+				</h2>
 				<Posts posts={regular} />
 			</div>
-			{/* Header, logo, menu */}
 		</div>
 	);
 }
@@ -41,6 +45,7 @@ export async function getStaticProps() {
 			query Posts {
 				cover: posts(
 					orderBy: createdAt_DESC
+					first: 1
 					where: { coverPhoto: true, pinned: false }
 				) {
 					id
@@ -58,6 +63,7 @@ export async function getStaticProps() {
 				}
 				pinned: posts(
 					orderBy: createdAt_DESC
+					first: 4
 					where: { coverPhoto: false, pinned: true }
 				) {
 					id
@@ -75,6 +81,7 @@ export async function getStaticProps() {
 				}
 				regular: posts(
 					orderBy: createdAt_DESC
+					first: 6
 					where: { coverPhoto: false, pinned: false }
 				) {
 					id

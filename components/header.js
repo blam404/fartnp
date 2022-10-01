@@ -28,7 +28,11 @@ export default function Header() {
 				</Head>
 				<div>
 					<Link href="/">
-						<h1 className="text-3xl logo cursor-pointer">F.ART</h1>
+						<a className="text-slate-800 no-underline">
+							<h1 className="text-3xl logo cursor-pointer">
+								F.ART
+							</h1>
+						</a>
 					</Link>
 					<p className="mb-0">
 						The latest art and photos coming out of Los Santos
@@ -37,6 +41,9 @@ export default function Header() {
 				{useMediaQuery(1024) ? (
 					<div>
 						<nav className="text-lg flex">
+							<div className="mx-2">
+								<Link href="/articles">Articles</Link>
+							</div>
 							<div className="mx-2">
 								<Link href="/submit">Submit</Link>
 							</div>

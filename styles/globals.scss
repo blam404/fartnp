@@ -17,8 +17,15 @@ body {
   @apply text-slate-800 bg-gray-50;
 }
 
-.logo {
-  font-family: "Libre Baskerville", serif;
+a {
+  @apply text-slate-400 underline
+}
+
+button:disabled {
+  @apply opacity-25
+}
+hr {
+  @apply my-8 border-gray-400 w-4/5
 }
 
 nav {
@@ -27,16 +34,14 @@ nav {
   }
 }
 
-a {
-  @apply text-slate-400 underline
-}
-
 p {
   @apply mb-4
 }
 
-hr {
-  @apply my-8 border-gray-400 w-4/5
+
+
+.logo {
+  font-family: "Libre Baskerville", serif;
 }
 
 .post-caption {
