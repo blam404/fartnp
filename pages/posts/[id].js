@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { loremIpsum } from "react-lorem-ipsum";
 
+import GalleryCarousel from "../../components/galleryCarousel";
+
 export async function getStaticPaths() {
 	const { data } = await client.query({
 		query: gql`
@@ -110,15 +112,7 @@ export default function Post({ post, footerHeight }) {
 						{publishedMonth} {publishedDate}, {publishedYear}
 					</p>
 				</div>
-				<div className="flex justify-center mb-8 bg-gray-800 w-full">
-					<Image
-						src={post.photos[0].url}
-						alt={post.title}
-						layout="intrinsic"
-						width={post.photos[0].width}
-						height={post.photos[0].height}
-					/>
-				</div>
+				<GalleryCarousel photos={post.photos} />
 				<div className="mb-8 md:w-2/3 mx-auto">
 					{post.body ? (
 						<div className="md:text-lg lg:text-xl">
