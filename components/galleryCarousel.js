@@ -27,7 +27,7 @@ export default function GalleryCarousel({ photos }) {
 					height={photos[photoIndex].height}
 				/>
 			</div>
-			{photos.length > 0 && (
+			{photos.length > 1 && (
 				<>
 					<div className="flex justify-center pt-2">
 						{photos.map((photo, index) => (
